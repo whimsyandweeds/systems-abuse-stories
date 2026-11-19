@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="color-scheme" content="light" />
+<title>Systems Abuse Patterns</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --ink:#1c1b19;
+    --body:#3c3935;
+    --purple:#6d6188;
+    --purple-deep:#4c4458;
+    --sage:#6f7d62;
+    --paper:#f3efe8;
+    --card:#fffcf8;
+    --line:rgba(28,27,25,.12);
+  }
+  * {box-sizing:border-box}
+  body {
+    margin:0;
+    background:#f7f4ee;
+    color:var(--ink);
+    font-family:"Outfit", system-ui, sans-serif;
+    line-height:1.5;
+  }
+  .wrap {
+    max-width:640px;
+    margin:0 auto;
+    padding:40px 20px 60px;
+  }
+  .blurb {
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:16px;
+    padding:20px 22px;
+    margin-bottom:28px;
+    font-size:15.5px;
+    color:var(--body);
+  }
+  h1 {
+    font-size:28px;
+    font-weight:600;
+    margin:0 0 8px;
+  }
+  .sub {
+    color:var(--body);
+    margin:0 0 24px;
+    font-size:15px;
+  }
+  .q {
+    margin-bottom:26px;
+  }
+  .q h3 {
+    margin:0 0 10px;
+    font-size:16.5px;
+    font-weight:600;
+  }
+  .chips {
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+  }
+  .chip {
+    border:1.5px solid var(--line);
+    background:var(--paper);
+    color:var(--body);
+    cursor:pointer;
+    border-radius:999px;
+    padding:8px 14px;
+    font-family:inherit;
+    font-size:14px;
+    font-weight:500;
+  }
+  .chip.selected {
+    background:var(--purple);
+    color:#fff;
+    border-color:var(--purple);
+  }
+  textarea, input[type="email"] {
+    width:100%;
+    border:1.5px solid var(--line);
+    background:var(--paper);
+    border-radius:12px;
+    padding:12px 14px;
+    font-family:inherit;
+    font-size:15px;
+    color:var(--ink);
+  }
+  textarea {
+    min-height:100px;
+    resize:vertical;
+  }
+  label.consent {
+    display:flex;
+    gap:10px;
+    align-items:flex-start;
+    font-size:14.5px;
+    margin:8px 0 20px;
+  }
+  button.submit {
+    background:var(--sage);
+    color:#fff;
+    border:0;
+    border-radius:999px;
+    padding:12px 24px;
+    font-family:inherit;
+    font-size:15px;
+    font-weight:600;
+    cursor:pointer;
+  }
+  .result {
+    display:none;
+    margin-top:20px;
+    padding:16px;
+    background:#e7f0e3;
+    border-radius:12px;
+    font-size:14.5px;
+  }
+  .result.show {display:block}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="blurb">
+    I owned my house for years before I married him. After we broke up he could still kick the door in whenever he wanted because he was still my legal husband. He stole phones, jumped on the car, unplugged the garage door. When the cops came he flipped the story and I got removed from my own house. The law protected him. That’s the pattern I’m collecting.
+  </div>
+
+  <h1>Systems used against you</h1>
+  <p class="sub">Pattern collection for advocacy. Not legal advice.</p>
+
+  <form id="form">
+    <div class="q">
+      <h3>Have you (or someone you support) had an abuser use systems against you?</h3>
+      <div class="chips" data-name="experienced" data-multi="false">
+        <button type="button" class="chip" data-value="yes">Yes</button>
+        <button type="button" class="chip" data-value="no">No</button>
+        <button type="button" class="chip" data-value="unsure">Not sure</button>
+      </div>
+    </div>
+
+    <div class="q">
+      <h3>Which systems? (select all that apply)</h3>
+      <div class="chips" data-name="systems" data-multi="true">
+        <button type="button" class="chip" data-value="cops">Cops</button>
+        <button type="button" class="chip" data-value="courts">Courts</button>
+        <button type="button" class="chip" data-value="lawyers">Lawyers</button>
+        <button type="button" class="chip" data-value="medical">Medical</button>
+        <button type="button" class="chip" data-value="housing">Housing / Landlords</button>
+        <button type="button" class="chip" data-value="child-welfare">Child welfare</button>
+        <button type="button" class="chip" data-value="schools">Schools</button>
+        <button type="button" class="chip" data-value="banks">Banks / financial</button>
+        <button type="button" class="chip" data-value="other">Other</button>
+      </div>
+    </div>
+
+    <div class="q">
+      <h3>What happened? (select all that apply)</h3>
+      <div class="chips" data-name="tactics" data-multi="true">
+        <button type="button" class="chip" data-value="darvo">Story flipped / DARVO</button>
+        <button type="button" class="chip" data-value="nothing">Told nothing could be done</button>
+        <button type="button" class="chip" data-value="removed">Removed or disbelieved</button>
+        <button type="button" class="chip" data-value="home-access">He kept access to the home</button>
+        <button type="button" class="chip" data-value="money">Controlled money or accounts</button>
+        <button type="button" class="chip" data-value="credit">Cut off credit or income</button>
+        <button type="button" class="chip" data-value="evidence">Evidence ignored</button>
+        <button type="button" class="chip" data-value="stopped">Stopped reporting</button>
+        <button type="button" class="chip" data-value="other">Other</button>
+      </div>
+    </div>
+
+    <div class="q">
+      <h3>Did he use systems to control or block money, accounts, credit, or income?</h3>
+      <div class="chips" data-name="financial" data-multi="false">
+        <button type="button" class="chip" data-value="yes">Yes</button>
+        <button type="button" class="chip" data-value="no">No</button>
+        <button type="button" class="chip" data-value="unsure">Not sure</button>
+      </div>
+    </div>
+
+    <div class="q">
+      <h3>Did he keep the ability to enter or control the home after the relationship ended?</h3>
+      <div class="chips" data-name="home" data-multi="false">
+        <button type="button" class="chip" data-value="yes">Yes</button>
+        <button type="button" class="chip" data-value="no">No</button>
+        <button type="button" class="chip" data-value="unsure">Not sure</button>
+      </div>
+    </div>
+
+    <div class="q">
+      <h3>Did this stall or reverse an exit?</h3>
+      <div class="chips" data-name="impact" data-multi="false">
+        <button type="button" class="chip" data-value="yes">Yes</button>
+        <button type="button" class="chip" data-value="partially">Partially</button>
+        <button type="button" class="chip" data-value="no">No</button>
+      </div>
+    </div>
+
+    <div class="q">
+      <h3>Tell it in your words (optional)</h3>
+      <textarea name="story" placeholder="What happened"></textarea>
+    </div>
+
+    <div class="q">
+      <h3>Email if we can contact you (optional)</h3>
+      <input type="email" name="email" placeholder="you@example.com" />
+    </div>
+
+    <label class="consent">
+      <input type="checkbox" name="consent" required />
+      <span>I understand this is for pattern collection and possible advocacy, not legal advice.</span>
+    </label>
+
+    <button type="submit" class="submit">Submit</button>
+  </form>
+
+  <div class="result" id="result">
+    <strong>Thank you.</strong>
+    <p>Your answers are below. Copy them if you want to keep or send them.</p>
+    <pre id="summary" style="white-space:pre-wrap;font-family:inherit;font-size:14px;margin:10px 0"></pre>
+    <button type="button" id="copy" style="background:var(--purple);color:#fff;border:0;border-radius:999px;padding:8px 16px;cursor:pointer">Copy summary</button>
+  </div>
+</div>
+
+<script>
+document.querySelectorAll('.chips').forEach(group => {
+  const multi = group.dataset.multi === 'true';
+  group.querySelectorAll('.chip').forEach(chip => {
+    chip.addEventListener('click', () => {
+      if (!multi) group.querySelectorAll('.chip').forEach(c => c.classList.remove('selected'));
+      chip.classList.toggle('selected');
+    });
+  });
+});
+
+document.getElementById('form').addEventListener('submit', e => {
+  e.preventDefault();
+  const data = {};
+  document.querySelectorAll('.chips').forEach(group => {
+    const name = group.dataset.name;
+    const selected = [...group.querySelectorAll('.chip.selected')].map(c => c.dataset.value);
+    if (selected.length) data[name] = group.dataset.multi === 'true' ? selected : selected[0];
+  });
+  const story = document.querySelector('[name="story"]').value.trim();
+  const email = document.querySelector('[name="email"]').value.trim();
+  if (story) data.story = story;
+  if (email) data.email = email;
+
+  const text = Object.entries(data).map(([k,v]) => `${k}: ${Array.isArray(v) ? v.join(', ') : v}`).join('\n');
+  document.getElementById('summary').textContent = text;
+  document.getElementById('result').classList.add('show');
+  document.getElementById('result').scrollIntoView({behavior:'smooth'});
+});
+
+document.getElementById('copy').addEventListener('click', () => {
+  const text = document.getElementById('summary').textContent;
+  navigator.clipboard.writeText(text);
+  document.getElementById('copy').textContent = 'Copied';
+});
+</script>
+</body>
+</html>
